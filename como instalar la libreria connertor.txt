@@ -1,0 +1,8 @@
+// Para la instalacion de la libreria conector en eclipse
+// primero daran click+derecho en su projecto java, e iran a la ultima
+// opcion la cual es propiedades, una vez les salga la ventana de propiedades
+// iran a la obcion de java build path, dentro de esta haran click en
+// Modulepath, y luego iran a la derecha y haran click en add external JARs
+// Despues buscaran el archivo mysql-connector.jar
+// el archivo estara en donde descargaron mi zip, y no se olviden de 
+// descomprimirlo antes, y eso seria todo, para la implementacion de la libreria jar

@@ -1,0 +1,70 @@
+//Para la correcta utilizacion del sistema se necesita la base de datos
+// y tambien el conector de java y MySQL, la base de datos la doy aqui abajo 
+// para la facil creacion de esta.
+
+//Y en caso no Tengan el conector o no sepan como usarlo, dejare el zip, y
+// hare un .txt extra explicando como instalarlo en eclipse
+
+//Script para la creacion de la base de datos de workbrench
+Create database prueba;
+use prueba;
+
+
+-- Tabla para el inventario de productos
+CREATE TABLE inventario (
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    cantidad INT NOT NULL
+);
+
+-- Tabla para las facturas
+CREATE TABLE facturas (
+    id_factura INT PRIMARY KEY AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    CONSTRAINT unique_factura UNIQUE (id_factura)
+);
+
+CREATE TABLE detalle_factura (
+    id_detalle INT PRIMARY KEY AUTO_INCREMENT,
+    id_factura INT,
+    id_producto INT,
+    cantidad INT NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT fk_factura FOREIGN KEY (id_factura) REFERENCES facturas(id_factura),
+    CONSTRAINT fk_producto FOREIGN KEY (id_producto) REFERENCES inventario(id_producto)
+);
+
+//Insercion de productos
+
+INSERT INTO inventario (nombre, precio, cantidad) VALUES
+('Martillo', 15.99, 20),
+('Destornillador Phillips', 5.49, 30),
+('Destornillador Plano', 5.49, 30),
+('Juego de Llaves Inglesas', 29.99, 10),
+('Cinta Métrica', 9.99, 20),
+('Sierra para Metales', 24.99, 15),
+('Clavos de Acero', 8.99, 50),
+('Tornillos para Madera', 6.99, 40),
+('Alicate de Corte', 12.99, 15),
+('Pegamento para Madera', 7.49, 20),
+('Nivel de Burbuja', 11.99, 10),
+('Brocas para Madera', 14.99, 10),
+('Brocas para Metal', 14.99, 10),
+('Cautín', 19.99, 8),
+('Estaño para Soldar', 5.99, 15),
+('Lija para Madera', 3.99, 30),
+('Lija para Metal', 3.99, 30),
+('Pala de Jardín', 18.99, 10),
+('Candado de Seguridad', 8.49, 8),
+('Cadena para Bicicletas', 12.99, 5),
+('Llave Ajustable', 10.99, 12),
+('Guantes de Trabajo', 6.99, 15),
+('Linterna LED', 14.99, 8),
+('Cinta Adhesiva Resistente', 4.99, 20),
+('Tapones para Oídos', 2.49, 25),
+('Mascarilla de Protección', 1.99, 30),
+('Guantes de Seguridad', 8.99, 12),
+('Extensión Eléctrica', 16.99, 5),
+('Taladro Eléctrico', 89.99, 3),
+('Llave de Tubo', 13.49, 10);
